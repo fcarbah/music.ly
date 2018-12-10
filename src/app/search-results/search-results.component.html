@@ -1,10 +1,8 @@
-
-
-<div class="position-absolute p-1">
-	<a routerLink="/" class="btn btn-default text-white"><i class="fa-3x fas fa-arrow-left"></i></a>
-</div>
-
 <div class="container p-5">
+
+	<div class="fixed-top p-1">
+		<a routerLink="/" class="btn btn-default text-white"><i class="fa-2x fas fa-arrow-left"></i></a>
+	</div>
 
 	<div class="jumbotron" *ngIf="result != null">
 
@@ -43,3 +41,5 @@
 	</div>
 
 </div>
+
+<swal #alertSwal title="" text="" type=""></swal>

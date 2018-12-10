@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { NotifyService } from '../services/notify.service';
+import { SwalComponent } from '@toverux/ngx-sweetalert2';
 
 @Component({
   selector: 'app-search-results',
@@ -8,19 +10,22 @@ import { ApiService } from '../api.service';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit {
-
+	
 	search='';
 	result=null;
 	lyrics =null;
 	track=null;
 	album=null;
 	albumTracks = null;
+	@ViewChild('alertSwal') private swal: SwalComponent;
 
-  	constructor(private route:ActivatedRoute, private router:Router, private api:ApiService) { }
+  	constructor(private route:ActivatedRoute, private router:Router, private api:ApiService,
+  		private notify:NotifyService) { }
 
   	ngOnInit() {
   		this.search = this.route.snapshot.paramMap.get('query');
   		this.searchTrack();
+  		this.notify.setSwal(this.swal);
   	}
 
   	formatArg = {search:/\n/g,replace:'<br/>'};
@@ -32,7 +37,7 @@ export class SearchResultsComponent implements OnInit {
   	getAlbum(albumId){
   		this.api.getAlbum(albumId)
   		.subscribe(res=>{
-  			console.log(res);
+  			//console.log(res);
   			this.album = res;
   			this.getAlbumTracks(this.album.album_id);
   		});
@@ -41,7 +46,7 @@ export class SearchResultsComponent implements OnInit {
   	getAlbumTracks(albumId){
   		this.api.getAlbumTracks(albumId)
   		.subscribe(res=>{
-  			console.log(res);
+  			//console.log(res);
   			this.albumTracks = res;
   		});
   	}
@@ -49,7 +54,7 @@ export class SearchResultsComponent implements OnInit {
   	getLyrics(trackId:number){
   		this.api.getLyrics(trackId)
   		.subscribe(res=>{
-  			console.log(res);
+  			//console.log(res);
   			this.lyrics = res;
   		});
   	}
@@ -57,16 +62,16 @@ export class SearchResultsComponent implements OnInit {
   	getTrack(trackId){
   		this.api.getTrack(trackId)
   		.subscribe(res=>{
-  			console.log(res);
+  			//console.log(res);
   			this.lyrics = res;
   		});
   	}
 
   	searchTrack(){
-		if(this.search != '' && this.search.length > 3){
-			var parts = this.search.split(/\s*by\s*/);
-			var song = parts[0];
-			var artist = parts.length >1 ? parts[1] :'';
+		if(this.search != '' && this.search.split(/\sby\s/).length > 1){
+			var parts = this.search.split(/\sby\s/);
+			var song = parts[0].trim();
+			var artist = parts.length >1 ? parts[1].trim() :'';
 			this.api.searchSong(song,artist)
 			.subscribe(res =>{
 				
@@ -77,10 +82,17 @@ export class SearchResultsComponent implements OnInit {
 						this.getLyrics(this.result.track_id);
 						this.getAlbum(this.result.album_id);
 					}
-					console.log(res);
+					//console.log(res);
 				}
 
-			});
+			},
+			error =>{
+				//console.log(error);
+				this.notify.show({title:'',
+          html:'Search for "'+ this.search + '" ' +error.statusText,type:'error'});
+			}
+			);
+
 		}
 	}
 

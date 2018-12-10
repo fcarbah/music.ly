@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Charmonman|Kalam|Marck+Script|News+Cycle|Noto+Serif+TC|Patrick+Hand|Roboto');
 html, body{
 	height:100%;
 }
@@ -7,6 +8,14 @@ html, body{
 .search-container{width:100%;padding:0% 15%;}
 .search-container .msearch .form-control{height:48px;border-radius:0;border:0;}
 .search-container .msearch .btn{border-radius:0;}
+
+.font-roboto{font-family: 'Roboto', sans-serif;}
+.font-noto{font-family: 'Noto Serif TC', serif;}
+.font-charmonman{font-family: 'Charmonman', cursive;}
+.font-patrick{font-family: 'Patrick Hand', cursive;}
+.font-kalam{font-family: 'Kalam', cursive;}
+.font-marck{font-family: 'Marck Script', cursive;}
+.font-news-cycle{font-family: 'News Cycle', sans-serif;}
 
 @for $i from 8 through 64 {
   .font-#{$i}{font-size: 0px + $i;}
