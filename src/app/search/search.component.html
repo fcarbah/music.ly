@@ -1,0 +1,23 @@
+<div class="search-container d-flex bd-highlight w-100 h-100" >
+
+    <div class="align-self-center p-2 bd-highlight w-100 text-center">
+
+		<div class="col-md-12 px-3 my-1">
+			<h3 class="text-white display-4">Find Lyrics to your favorite songs</h3>
+			<p class="text-white">Enter search in the following format <span class="font-20">[Song Title] [by] [Artist Name]</span></p>
+		</div>
+
+    	<div class="input-group col-md-12 msearch">
+
+    		<input type="text" class="form-control" [(ngModel)]="search" placeholder='"Song Title" by "Artist Name"'/>
+
+    		<div class="input-group-append">
+    			<button type="button" class="btn btn-success" (click)="searchTrack()">Search</button>
+    		</div>
+
+    	</div>
+
+
+    </div>
+
+</div>

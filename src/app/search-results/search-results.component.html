@@ -1,0 +1,45 @@
+
+
+<div class="position-absolute p-1">
+	<a routerLink="/" class="btn btn-default text-white"><i class="fa-3x fas fa-arrow-left"></i></a>
+</div>
+
+<div class="container p-5">
+
+	<div class="jumbotron" *ngIf="result != null">
+
+		<h1 class="display-4">{{result.track_name}}</h1>
+
+		<p class="lead">
+			<span class="p-1 px-2 mx-1 rounded bg-dark text-white">Artist: {{result.artist_name}}</span>
+			<span class="p-1 px-2 mx-1 rounded bg-dark text-white">Album: {{result.album_name}}</span>
+			<span class="p-1 px-2 mx-1 rounded bg-dark text-white" *ngIf="album!=null && album.album_release_date != ''">Release Date: {{album.album_release_date | date :'mediumDate'}}</span>
+		</p>
+
+		<hr class="my-4">
+
+		<div class="card-group">
+
+			<div class="card bg-light mb-3" *ngIf="lyrics">
+			  <div class="card-header">Lyrics</div>
+			  <div class="card-body">
+			    
+			    <p class="card-text" innerHTML="{{lyrics.lyrics_body | formatter:formatStr:formatArg}}"></p>
+			  </div>
+			</div>
+
+			<div class="card bg-light mb-3" *ngIf="albumTracks != null">
+			  	<div class="card-header">Album Tracks 
+			  		<span class="badge badge-primary float-right font-16">{{albumTracks.length}}</span>
+			  	</div>
+			  	<div class="card-body">
+			  		<ul class="list-group list-group-flush">
+			  			<li class="list-group-item bg-transparent text-muted" *ngFor="let track of albumTracks">{{track.track_name}}</li>
+			  		</ul>
+			  	</div>
+			</div>
+		</div>
+		  
+	</div>
+
+</div>

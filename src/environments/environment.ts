@@ -2,8 +2,20 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+declare var require:any;
+
+let env:any = {url:'https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1/',key:''};
+try{
+	env = require('./.env');
+}
+catch(e){
+	console.log(e);
+}
+
 export const environment = {
-  production: false
+  production: false,
+  url:env.url,//'https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1/',
+  key:env.key,//'a1fqm4Jwwkmshck8KKMrJmYRJP2Gp1RIBdOjsnYV1Lbo5SJZ34'
 };
 
 /*

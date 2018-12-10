@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+html, body{
+	height:100%;
+}
+
+.default-bk{background:#448aff;}
+
+.search-container{width:100%;padding:0% 15%;}
+.search-container .msearch .form-control{height:48px;border-radius:0;border:0;}
+.search-container .msearch .btn{border-radius:0;}
+
+@for $i from 8 through 64 {
+  .font-#{$i}{font-size: 0px + $i;}
+
+}
