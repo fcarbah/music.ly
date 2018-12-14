@@ -14,8 +14,8 @@ catch(e){
 
 export const environment = {
   production: false,
-  url:env.url,//'https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1/',
-  key:env.key,//'a1fqm4Jwwkmshck8KKMrJmYRJP2Gp1RIBdOjsnYV1Lbo5SJZ34'
+  url:env.url,
+  key:env.key
 };
 
 /*
