@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: musicapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: musicapp 
+  template:
+    metadata:
+      labels:
+        component: musicapp 
+    spec:
+      containers:
+        - name: musicapp
+          image: fcarbah/musicly
+          ports:
+            - containerPort: 3000

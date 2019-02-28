@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: musicapp-cluster-ip-service
+spec:
+  type: musicapp-cluster-ip-service
+  selector:
+    component: musicapp 
+  ports:
+    - port: 3000
+      targetPort: 3000
