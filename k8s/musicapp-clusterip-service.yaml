@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: musicapp-cluster-ip-service
 spec:
-  type: musicapp-cluster-ip-service
+  type: ClusterIP
   selector:
     component: musicapp 
   ports:
