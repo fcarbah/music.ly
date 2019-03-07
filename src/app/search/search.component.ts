@@ -12,12 +12,30 @@ import find from 'lodash';
 export class SearchComponent implements OnInit {
 
 	search='';
+	valid=false;
+	validMessage='';
+	validPattern = /\w{2,}\s+by\s+\w{2,}/i;
 	@ViewChild('alertSwal') private swal: SwalComponent;
 
   	constructor(private router: Router,private notify:NotifyService) { }
 
 	ngOnInit() {
 		this.notify.setSwal(this.swal);
+	}
+
+	change($event){
+
+		if(this.search ==''){
+			this.validMessage='';
+		}
+
+		if(this.validPattern.test(this.search)){
+			this.validMessage= "<i class='fas fa-check'></i> Valid";
+			this.valid=true;
+		}else{
+			this.validMessage = "<i class='fas fa-times'></i> Invalid";
+			this.valid=false;
+		}
 	}
 
 	searchTrack(){

@@ -1,8 +1,8 @@
 <div class="search-container d-flex bd-highlight w-100 h-100" >
 
-    <div class="align-self-center p-2 bd-highlight w-100 text-center">
+    <div class="align-self-center1 p-2 bd-highlight w-100 text-center mt-5">
 
-		<div class="col-md-12 px-3 my-1">
+		<!-- <div class="col-md-12 px-3 my-1">
 			<h3 class="text-white display-4">Find Lyrics to your favorite songs</h3>
 			<p class="text-white">Enter search in the following format <span class="font-20">[Song Title] [by] [Artist Name]</span></p>
 		</div>
@@ -15,11 +15,32 @@
     			<button type="button" class="btn btn-success" (click)="searchTrack()">Search</button>
     		</div>
 
-    	</div>
+    	</div> -->
+
+        <div class="jumbotron text-left bg-transparent">
+            <h1 class="display-4">Find Lyrics to your favorite songs</h1>
+            <p class="lead">Enter search in the following format <span class="font-20">[Song Title] [by] [Artist Name]</span></p>
+            <hr class="my-4">
+
+            <div class="input-group msearch">
+
+                <input type="text" class="form-control" [(ngModel)]="search" (keypress)="change($event)" placeholder='"Song Title" by "Artist Name"'/>
+
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-success" (click)="searchTrack()" [disabled]="!valid">Search</button>
+                </div>
+
+            </div>
+
+            <p *ngIf="validMessage !=''" class="bg-light p-2 font-14 text-right" [ngClass]="(valid)?'text-primary':'text-danger'" [innerHTML]="validMessage"></p>
+            <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+        </div>
 
 
     </div>
 
 </div>
+
+
 
 <swal #alertSwal title="" text="" type=""></swal>
