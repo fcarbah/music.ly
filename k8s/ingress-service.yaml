@@ -11,5 +11,5 @@ spec:
         paths:
           - path: /(.*)
             backend:
-            serviceName: musicapp-cluster-ip-service
-            servicePort: 3000
+              serviceName: musicapp-cluster-ip-service
+              servicePort: 3000
