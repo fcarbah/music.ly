@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
 	search='';
 	valid=false;
 	validMessage='';
-	validPattern = /\w{2,}\s+by\s+\w+(.*)+/i;
+	validPattern = /\w+(.*)+\s+by\s+\w+(.*)+/i;
 	@ViewChild('alertSwal') private swal: SwalComponent;
 
   	constructor(private router: Router,private notify:NotifyService) { }
@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
 			this.validMessage= "<i class='fas fa-check'></i> Valid";
 			this.valid=true;
 		}else{
-			this.validMessage = "<i class='fas fa-times'></i> Invalid";
+			this.validMessage = "<i class='fas fa-times'></i> Invalid Search Query";
 			this.valid=false;
 		}
 
