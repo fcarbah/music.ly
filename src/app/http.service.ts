@@ -7,7 +7,7 @@ import {environment} from '../environments/environment';
 })
 export class HttpService {
 
-	headers = new HttpHeaders({'Accept':'application/json',"X-Mashape-Key":environment.key});
+	headers = new HttpHeaders({'Accept':'application/json',"X-RapidAPI-Key":environment.key});
 
 
   	constructor(private http:HttpClient) { }

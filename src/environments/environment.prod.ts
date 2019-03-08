@@ -1,5 +1,5 @@
 
-let env:any = {url:'https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1/',key:''};
+let env:any = {url:'https://musixmatchcom-musixmatch.p.rapidapi.com/wsr/1.1/',key:''};
 try{
 	env = require('./.env');
 }
