@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
 	search='';
 	valid=false;
 	validMessage='';
-	validPattern = /\w{2,}\s+by\s+\w{2,}/i;
+	validPattern = /\w{2,}\s+by\s+\w+(.*)+/i;
 	@ViewChild('alertSwal') private swal: SwalComponent;
 
   	constructor(private router: Router,private notify:NotifyService) { }
@@ -35,6 +35,10 @@ export class SearchComponent implements OnInit {
 		}else{
 			this.validMessage = "<i class='fas fa-times'></i> Invalid";
 			this.valid=false;
+		}
+
+		if($event.keyCode==13 && this.valid){
+			this.searchTrack();
 		}
 	}
 

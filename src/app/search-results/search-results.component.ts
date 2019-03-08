@@ -67,6 +67,10 @@ export class SearchResultsComponent implements OnInit {
   		});
   	}
 
+    goBack(){
+      this.router.navigateByUrl('/');
+    }
+
   	searchTrack(){
 		if(this.search != '' && this.search.split(/\sby\s/).length > 1){
 			var parts = this.search.split(/\sby\s/);
@@ -89,7 +93,9 @@ export class SearchResultsComponent implements OnInit {
 			error =>{
 				//console.log(error);
 				this.notify.show({title:'',
-          html:'Search for "'+ this.search + '" ' +error.statusText,type:'error'});
+          html:'Search for "'+ this.search + '" ' +error.statusText,type:'error',
+          onClose: this.goBack()
+        });
 			}
 			);
 
