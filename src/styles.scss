@@ -6,7 +6,7 @@ html, body{
 .default-bk{background:#448aff;}
 .img-bg3{background-image:url('/assets/images/bk3.jpg');}
 
-.search-container{width:100%;padding:0% 15%;}
+.search-container{width:100%;padding:15%;}
 .search-container .msearch .form-control{height:48px;border-radius:0;border:0;}
 .search-container .msearch .btn{border-radius:0;}
 .search-container .msearch .form-control:focus{outline:none!important;box-shadow:none;}
@@ -29,4 +29,12 @@ html, body{
   @each $item in ('top','bottom','left','right'){
   	.border-#{$item}-#{$i}{border-#{$item}:0px + $i solid #eee;}
   }
+}
+
+@media screen and(max-width:992px){
+	.search-container{padding:2%;}
+}
+
+@media screen and(max-height:500px){
+	.search-container{margin-bottom:50px;}
 }
